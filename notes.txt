@@ -1,0 +1,9 @@
+6 aug 2026
+in this file i'll document every progress i do in this project untell it be ready
+---
+so, today think i nead to learn from what any OS consist to just know how to write the first virsion base
+
+9 aug 2026
+OK i know im little bit lazy ,, or maybe lazy , SO LAZY ik.
+but i learnd hat the init have to deal with oprations (forks) n alot of computer bullshit n terorism things like kill childs but im still begginer,,,
+i'll try to use a new learn way ,i just start writing the code after learning the basices , i'll try that now then write the upates
