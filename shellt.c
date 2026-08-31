@@ -22,7 +22,11 @@ void sinput(char the_input[]){
 fgets(the_input,PATH_MAX,stdin);
 the_input[strcspn(the_input, "\n")] = 0;
 }
-
+void wdni(char *path){
+	if(chdir(path) == -1){
+		perror("wdni");
+	}
+}
 int main(){
 printf("welcome to __ script\n");
 while(1){
@@ -52,14 +56,18 @@ exit(0);
 if(the_user_command_counter == 1){
 wshfeeh(".");
 }else if(the_user_command_counter == 2){
-wshfeeh(the_user_command_array[1]);
+if(the_user_command_counter == 2){
+wdni(the_user_command_array[1]);
+}else{
+printf("wdni needs one path\n");
+}
 }else{
 printf("more arguments mf\n");
 }
 }else if(strcmp(the_user_command_array[0],"anaween?") == 0){
 printf("%s\n", the_user_path);
-}else if(strcmp(the_user_command_array[0],"wdni")){
-
+}else if(strcmp(the_user_command_array[0],"wdni") == 0){
+	wdni(the_user_command_array[1]);
 }else{
 printf("no command called %s\n",the_user_command_array[0]);
 }
