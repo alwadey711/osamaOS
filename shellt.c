@@ -6,18 +6,6 @@
 #include <limits.h>
 #include <dirent.h>
 
-void wshfeeh(char *path){
-DIR *dirlocat = opendir(path);
-struct dirent *theonece;
-if(dirlocat == NULL){
-printf("you cant reach thats file stupid B****");
-return;
-}
-while((theonece = readdir(dirlocat)) != NULL){
-printf("%s\n", theonece->d_name);
-}
-}
-
 void sinput(char the_input[]){
 fgets(the_input,PATH_MAX,stdin);
 the_input[strcspn(the_input, "\n")] = 0;
@@ -53,16 +41,11 @@ printf("\n");
 if(strcmp(the_user_command_array[0],"exit") == 0){
 exit(0);
 }else if(strcmp(the_user_command_array[0],"wshfeeh?") == 0){
-if(the_user_command_counter == 1){
-wshfeeh(".");
-}else if(the_user_command_counter == 2){
-if(the_user_command_counter == 2){
-wdni(the_user_command_array[1]);
+pid_t pid = fork();
+if(pid == 0){
+execvp("./wshfeeh",the_user_command_array);
 }else{
-printf("wdni needs one path\n");
-}
-}else{
-printf("more arguments mf\n");
+wait(NULL);
 }
 }else if(strcmp(the_user_command_array[0],"anaween?") == 0){
 printf("%s\n", the_user_path);
