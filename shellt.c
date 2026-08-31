@@ -48,7 +48,12 @@ execvp("./wshfeeh",the_user_command_array);
 wait(NULL);
 }
 }else if(strcmp(the_user_command_array[0],"anaween?") == 0){
-printf("%s\n", the_user_path);
+pid_t pid = fork();
+if (pid == 0){
+	execlp("./anaween","anaween",NULL);
+}else{
+wait(NULL);
+}
 }else if(strcmp(the_user_command_array[0],"wdni") == 0){
 	wdni(the_user_command_array[1]);
 }else{
