@@ -11,7 +11,7 @@ path = argv[1];
 DIR *dirlocat = opendir(path);
 struct dirent *theonece;
 if(dirlocat == NULL){
-printf("you cant reach thats file stupid B****");
+perror("wshfeeh?");
 return 1;
 }
 while((theonece = readdir(dirlocat)) != NULL){

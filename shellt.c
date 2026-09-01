@@ -32,7 +32,7 @@ the_user_command_array[the_user_command_counter] = the_user_command_tok;
 the_user_command_counter++;
 the_user_command_tok = strtok(NULL," \t");
 }
-
+the_user_command_array[the_user_command_counter] = NULL;
 if(the_user_command_counter == 0){
 continue;
 }
@@ -60,6 +60,13 @@ wait(NULL);
 	pid_t pid = fork();
 	if(pid == 0){
 		execlp("./sheel","sheel",NULL);
+	}else{
+		wait(NULL);
+	}
+}else if(strcmp(the_user_command_array[0],"somlf") == 0){
+	pid_t pid = fork();
+	if (pid == 0){
+		execvp("./somlf",the_user_command_array);
 	}else{
 		wait(NULL);
 	}
