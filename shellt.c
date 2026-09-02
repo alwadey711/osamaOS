@@ -110,21 +110,26 @@ wait(NULL);
 	wait(NULL);
 	}
 }else if(strcmp(the_user_command_array[0],"brnmj") == 0){
-	if(the_user_command_array[1] == NULL){
-		printf("brnmj: missing program\n");
+	pid_t pid = fork();
+	if (pid == 0){
+	execvp("./brnmj",the_user_command_array);
+	perror("execvp");
+	exit(1);
 	}else{
-		pid_t pid = fork();
-		if (pid == 0){
-		execvp(the_user_command_array[1],&the_user_command_array[1]);
-		perror("execvp");
-		exit(1);
-		}else{
-		wait(NULL);
-		}
+	wait(NULL);
 	}
 }else if(strcmp(the_user_command_array[0],"history") == 0){
 	for(int i = 0; i < history_count; i++){
 		printf("%d %s\n", i, history[i]);
+}
+}else if(strcmp(the_user_command_array[0],"hml") == 0){
+	pid_t pid = fork();
+	if (pid == 0){
+	execvp("./hml",the_user_command_array);
+	perror("hml");
+	exit(1);
+}else{
+	wait(NULL);
 }
 }else{
 printf("no command called %s\n",the_user_command_array[0]);
