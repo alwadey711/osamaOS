@@ -36,7 +36,7 @@ if(strlen(the_user_command) > 0 && history_count < 100){
 }
 
 char *the_user_command_tok = strtok(the_user_command," \t");
-while(the_user_command_tok != NULL){
+while(the_user_command_tok != NULL && the_user_command_counter < 63){
 the_user_command_array[the_user_command_counter] = the_user_command_tok;
 the_user_command_counter++;
 the_user_command_tok = strtok(NULL," \t");
@@ -53,6 +53,8 @@ exit(0);
 pid_t pid = fork();
 if(pid == 0){
 execvp("./wshfeeh",the_user_command_array);
+perror("execvp");
+exit(1);
 }else{
 wait(NULL);
 }
@@ -60,15 +62,23 @@ wait(NULL);
 pid_t pid = fork();
 if (pid == 0){
 	execlp("./anaween","anaween",NULL);
+	perror("execlp");
+	exit(1);
 }else{
 wait(NULL);
 }
 }else if(strcmp(the_user_command_array[0],"wdni") == 0){
-	wdni(the_user_command_array[1]);
+	if(the_user_command_array[1] == NULL){
+		printf("wdni: missing path\n");
+	}else{
+		wdni(the_user_command_array[1]);
+	}
 }else if(strcmp(the_user_command_array[0],"sheel") == 0){
 	pid_t pid = fork();
 	if(pid == 0){
 		execlp("./sheel","sheel",NULL);
+		perror("execlp");
+		exit(1);
 	}else{
 		wait(NULL);
 	}
@@ -76,6 +86,8 @@ wait(NULL);
 	pid_t pid = fork();
 	if (pid == 0){
 		execvp("./somlf",the_user_command_array);
+		perror("execvp");
+		exit(1);
 	}else{
 		wait(NULL);
 	}
@@ -83,6 +95,8 @@ wait(NULL);
 pid_t pid = fork();
 if (pid == 0){
 execvp("./sojld",the_user_command_array);
+perror("execvp");
+exit(1);
 }else{
 wait(NULL);
 }
@@ -90,15 +104,23 @@ wait(NULL);
 	pid_t pid = fork();
 	if (pid == 0){
 	execvp("./shl",the_user_command_array);
+	perror("execvp");
+	exit(1);
 	}else{
 	wait(NULL);
 	}
 }else if(strcmp(the_user_command_array[0],"brnmj") == 0){
-	pid_t pid = fork();
-	if (pid == 0){
-	execvp(the_user_command_array[1],&the_user_command_array[1]);
+	if(the_user_command_array[1] == NULL){
+		printf("brnmj: missing program\n");
 	}else{
-	wait(NULL);
+		pid_t pid = fork();
+		if (pid == 0){
+		execvp(the_user_command_array[1],&the_user_command_array[1]);
+		perror("execvp");
+		exit(1);
+		}else{
+		wait(NULL);
+		}
 	}
 }else if(strcmp(the_user_command_array[0],"history") == 0){
 	for(int i = 0; i < history_count; i++){
