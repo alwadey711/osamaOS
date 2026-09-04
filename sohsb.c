@@ -1,10 +1,10 @@
 #include "osama.h"
 int main(int argc, char *argv[]){
-	if(argc != 3){
+	if(argc != 2){
 		printf("usage : sohsb username");
 	}else{
 		FILE *file = fopen("users.txt","r");
-		FILE *filew = fopen("users.txt","w");
+		FILE *filew = fopen("users.txt","a");
 		int last_uid = -1;
 		char line[256];
 		while (fgets(line, sizeof(line), file) != NULL) {
