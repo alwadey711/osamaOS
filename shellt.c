@@ -131,6 +131,15 @@ wait(NULL);
 }else{
 	wait(NULL);
 }
+}else if(strcmp(the_user_command_array[0],"sohsb") == 0){
+	pid_t pid = fork();
+	if (pid == 0){
+	execvp("./sohsb",the_user_command_array);
+	perror("sohsb");
+	exit(1);
+}else{
+	wait(NULL);
+}
 }else{
 printf("no command called %s\n",the_user_command_array[0]);
 }

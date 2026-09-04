@@ -29,7 +29,7 @@ int main(int argc, char *argv[]){
 	    }else{
 	    	int li = ++last_uid;
 	    	fprintf(filew,"%s:%d\n",argv[1],li);
-	    	fprintf(passfile,"%d:%s",li,argv[2]);
+	    	fprintf(passfile,"%d:%s\n",li,argv[2]);
 	    }
 	}
 }
